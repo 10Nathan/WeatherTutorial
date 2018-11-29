@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="WeatherTutorial.MapPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WeatherTutorial"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:maps="using:Windows.UI.Xaml.Controls.Maps"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel>
+            
+            <maps:MapControl x:Name="MapControl"
+                              Height="700" MapServiceToken="9fxJMmFfHcYo6nXiX1A9~eKNpXXS658DATXPVw6Iapg~AoVg2pR4U3lQnMAaFPBVMZ76t1o5T3WTyCBi24ae2kq6kLqTZgvgZTcuDr-bKa7B"/>
+            <StackPanel>
+                <Button x:Name="MyStyleButton"
+                        Content="Aerial"
+                        Width="100"
+                        Height="50"
+                        Margin="15"
+                        Click="MyStyleButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
