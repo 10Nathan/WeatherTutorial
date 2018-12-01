@@ -37,9 +37,13 @@ namespace WeatherTutorial
                 {
                     case "Map":
                         MainFrame.Navigate(typeof(MapPage));
+                        AerialIcon.Visibility = Visibility.Visible;
+                        AerialText.Visibility = Visibility.Visible;
                         break;
                     case "Weather":
                         MainFrame.Navigate(typeof(WeatherPage));
+                        AerialIcon.Visibility = Visibility.Collapsed;
+                        AerialText.Visibility = Visibility.Collapsed;
                         break;
                     case "Travel":
                         MainFrame.Navigate(typeof(TravelPage));
@@ -47,6 +51,7 @@ namespace WeatherTutorial
                     case "Settings":
                         MainFrame.Navigate(typeof(SettingsPage));
                         break;
+                        
                 }
             }
         }
@@ -55,5 +60,7 @@ namespace WeatherTutorial
         {
             this.MySplitView.IsPaneOpen = this.MySplitView.IsPaneOpen ? false : true;
         }
+
+
     }
 }

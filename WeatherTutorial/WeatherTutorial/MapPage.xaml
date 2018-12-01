@@ -10,10 +10,10 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <maps:MapControl x:Name="MapControl"
+                              Height="auto" MapServiceToken="9fxJMmFfHcYo6nXiX1A9~eKNpXXS658DATXPVw6Iapg~AoVg2pR4U3lQnMAaFPBVMZ76t1o5T3WTyCBi24ae2kq6kLqTZgvgZTcuDr-bKa7B"/>
         <StackPanel>
             
-            <maps:MapControl x:Name="MapControl"
-                              Height="700" MapServiceToken="9fxJMmFfHcYo6nXiX1A9~eKNpXXS658DATXPVw6Iapg~AoVg2pR4U3lQnMAaFPBVMZ76t1o5T3WTyCBi24ae2kq6kLqTZgvgZTcuDr-bKa7B"/>
             <StackPanel>
                 <Button x:Name="MyStyleButton"
                         Content="Aerial"

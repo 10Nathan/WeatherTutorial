@@ -12,7 +12,7 @@
 
         <SplitView x:Name="MySplitView" DisplayMode="Inline" IsPaneOpen="True">
             <SplitView.Pane>
-                <StackPanel Margin="0,30,0,0">
+                <StackPanel Name="OptionList" Margin="0,30,0,0">
                     <RadioButton Tag="Map" Click="MenuItemClick">
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Map"/>
@@ -35,6 +35,13 @@
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Setting"/>
                             <TextBlock Text="Settings" Margin="15,0,0,0"/>
+                        </StackPanel>
+                    </RadioButton>
+                    
+                    <RadioButton Tag="Aerial" Click="MenuItemClick" HorizontalAlignment="Center">
+                        <StackPanel Orientation="Horizontal">
+                            <FontIcon Name="AerialIcon" FontFamily="Segoe MDL2 Assets" Glyph="&#xE76C;" Visibility="Collapsed"/>
+                            <TextBlock Name="AerialText" Text="Aerial" Margin="15,0,0,0" Visibility="Collapsed"/>
                         </StackPanel>
                     </RadioButton>
                 </StackPanel>
