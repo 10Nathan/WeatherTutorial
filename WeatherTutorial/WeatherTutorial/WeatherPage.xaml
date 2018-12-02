@@ -95,7 +95,7 @@
             <AppBarButton x:Name="btnAddLocation"
                           Foreground="White"
                           Icon="Add"
-                          Label="Add Location" Click="btnGetWeather_Click"
+                          Label="Add Location" Click="AddLocation_Click"
                           >
 
             </AppBarButton>

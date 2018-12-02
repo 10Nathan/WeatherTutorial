@@ -97,7 +97,24 @@ namespace WeatherTutorial
 
                 dataResult.Latitude = mapResult.Locations[0].Point.Position.Latitude;
                 dataResult.Longitude = mapResult.Locations[0].Point.Position.Longitude * -1;
+                Lat = dataResult.Latitude.ToString();
+                Lon = dataResult.Longitude.ToString();
 
+                var data = await Helper.Helper.GetWeather(Lat, Lon);
+                if (data != null)
+                {
+                    txtCity.Text = $"{data.name}, {data.sys.country}";
+                    lastUpdate.Text = $"Last updated : {DateTime.Now.ToString("dd MMMM yyyy HH:mm")}";
+
+                    BitmapImage image = new BitmapImage(new Uri($"http://openweathermap.org/img/w/{data.weather[0].icon}.png", UriKind.Absolute));
+                    imgWeather.Source = image;
+
+                    txtDescription.Text = $"{data.weather[0].description}";
+                    txtHumidity.Text = $"Humidity : {data.main.humidity}";
+                    txtTime.Text = $"{CommonWeather.CommonWeather.ConvertUnixTimeToDateTime(data.sys.sunrise).ToString("HH:mm")} / CommonWeather.CommonWeather.ConvertUnixTimeToDateTime(data.sys.sunset).ToString(HH:mm)";
+                    txtFrh.Text = $"{data.main.temp} ℉";
+                }
+                progressRing.IsActive = false;
 
             }
         }
