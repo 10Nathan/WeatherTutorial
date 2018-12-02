@@ -80,10 +80,9 @@
 
                     
                 </StackPanel>
+                
             </SplitView.Pane>
             <Frame x:Name="MainFrame"/>
-
-
         </SplitView>
 
         <!--HamburgerButton 123-->

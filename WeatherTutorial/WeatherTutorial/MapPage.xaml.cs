@@ -15,6 +15,8 @@ using Windows.UI.Xaml.Navigation;
 using Windows.Devices.Geolocation;
 using Windows.UI.Xaml.Controls.Maps;
 using Windows.UI.Popups;
+using Windows.Services.Maps;
+using Windows.UI;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,7 +27,9 @@ namespace WeatherTutorial
     /// </summary>
     public sealed partial class MapPage : Page
     {
+
         MainPage mainPage = new MainPage();
+        DialogResult dataResult = new DialogResult();
         public MapPage()
         {
             this.InitializeComponent();
@@ -79,8 +83,73 @@ namespace WeatherTutorial
 
         private async void Search_Click(object sender, RoutedEventArgs e)
         {
-            SearchDialog dialog = new SearchDialog();
+
+
+            //dataResult.Latitude = 5;
+
+            SearchDialog dialog = new SearchDialog(ref dataResult);
             await dialog.ShowAsync();
+
+
+
         }
+
+        private async void searchRoute()
+        {
+            MapControl = new MapControl();
+
+            if (dataResult.Latitude != 0 && dataResult.Longitude != 0)
+            {
+                //Start at Microsoft in Redmond, Washington.
+                BasicGeoposition startLocation = new BasicGeoposition() { Latitude = 47.643, Longitude = -122.131 };
+
+                // End at the city of Seattle, Washington.
+                BasicGeoposition endLocation = new BasicGeoposition() { Latitude = 47.604, Longitude = -122.329 };
+
+
+                // Get the route between the points.
+                MapRouteFinderResult routeResult =
+                        await MapRouteFinder.GetDrivingRouteAsync(
+                        new Geopoint(startLocation),
+                        new Geopoint(endLocation),
+                        MapRouteOptimization.Time,
+                        MapRouteRestrictions.None);
+
+                if (routeResult.Status == MapRouteFinderStatus.Success)
+                {
+                    // Use the route to initialize a MapRouteView.
+                    MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
+                    viewOfRoute.RouteColor = Colors.Yellow;
+                    viewOfRoute.OutlineColor = Colors.Black;
+
+                    // Add the new MapRouteView to the Routes collection
+                    // of the MapControl.
+                    MapControl.Routes.Add(viewOfRoute);
+
+                    // Fit the MapControl to the route.
+                    await MapControl.TrySetViewBoundsAsync(
+                            routeResult.Route.BoundingBox,
+                            null,
+                            Windows.UI.Xaml.Controls.Maps.MapAnimationKind.None);
+                }
+
+                
+
+            }
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            DialogResult message = e.Parameter as DialogResult;
+
+            if (message != null)
+            {
+                dataResult = message;
+                searchRoute();
+            }
+
+
+        }
+
     }
 }
