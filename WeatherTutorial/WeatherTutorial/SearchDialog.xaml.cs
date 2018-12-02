@@ -23,7 +23,7 @@ using Windows.UI.Xaml.Navigation;
 namespace WeatherTutorial
 {
    
-    public sealed partial class AddLocationDialog : ContentDialog
+    public sealed partial class SearchDialog : ContentDialog
     {
         double latitude1;
         double longitude1;
@@ -32,7 +32,7 @@ namespace WeatherTutorial
 
         private bool advancedSearch = false;
 
-        public AddLocationDialog(ref DialogResult param)
+        public SearchDialog(ref DialogResult param)
         {
             this.InitializeComponent();
 
