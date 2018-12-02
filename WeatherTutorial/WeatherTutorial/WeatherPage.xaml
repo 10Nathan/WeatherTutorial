@@ -91,6 +91,14 @@
                           >
 
             </AppBarButton>
+            
+            <AppBarButton x:Name="btnAddLocation"
+                          Foreground="White"
+                          Icon="Add"
+                          Label="Add Location" Click="AddLocation_Click"
+                          >
+
+            </AppBarButton>
         </CommandBar>
     </Page.BottomAppBar>
 

@@ -22,8 +22,8 @@ using Windows.UI.Xaml.Navigation;
 
 namespace WeatherTutorial
 {
-   
-    public sealed partial class SearchDialog : ContentDialog
+
+    public sealed partial class AddLocationDialog : ContentDialog
     {
         double latitude1;
         double longitude1;
@@ -31,8 +31,7 @@ namespace WeatherTutorial
         DialogResult parent;
 
         private bool advancedSearch = false;
-
-        public SearchDialog(ref DialogResult param)
+        public AddLocationDialog(ref DialogResult param)
         {
             this.InitializeComponent();
 
@@ -63,7 +62,14 @@ namespace WeatherTutorial
             parent.Latitude = 20;
         }
 
+        private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+        }
+
+      
+
         
+
         private void ContentDialog_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)
         {
             parent.Latitude = latitude1;
