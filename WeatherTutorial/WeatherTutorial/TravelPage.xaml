@@ -9,14 +9,26 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <ListBox Background="White">
-            <RadioButton Content="Arial" FontFamily="Arial"/>
-            <StackPanel Orientation="Horizontal" Visibility="Collapsed">
-                <TextBlock Text="Starting Location:" Margin="0,0,0,0"/>
-                <TextBlock Text="Destination: " Margin="150,0,0,0"/>
-            </StackPanel>
-            <RadioButton Content="Courier New" FontFamily="Courier New" Margin="0,-50,0,0"/>
-            <RadioButton Content="Times New Roman" FontFamily="Times New Roman"/>
-        </ListBox>
+        <ListView Name="listView" Background="White">
+            <RadioButton Content="Hello" Width="5000" Click="RadioButton_Click_1"></RadioButton>
+            
+
+        </ListView>
+        
     </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar ClosedDisplayMode="Compact" Background="#344A61">
+
+            <AppBarButton x:Name="Aerialbtn"
+                          Foreground="White"
+                          Icon = "Add"
+                          Label="Add Trip" Click="Trip_Click"
+                          >
+
+            </AppBarButton>
+
+        </CommandBar>
+    </Page.BottomAppBar>
+
 </Page>
