@@ -7,6 +7,7 @@ using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
+using Windows.Services.Maps;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -27,7 +28,7 @@ namespace WeatherTutorial
     public sealed partial class WeatherPage : Page
     {
         string Lat, Lon;
-
+        DialogResult dataResult = new DialogResult();
         public WeatherPage()
         {
             this.InitializeComponent();
@@ -69,5 +70,43 @@ namespace WeatherTutorial
             }
             progressRing.IsActive = false;
         }
+
+
+        private async void AddLocation_Click(object sender, RoutedEventArgs e)
+        {
+
+            AddLocationDialog dialog = new AddLocationDialog(ref dataResult);
+            var result = await dialog.ShowAsync();
+
+            if (result == ContentDialogResult.Primary)
+            {
+
+                double a = dataResult.Latitude;
+
+
+                string address = dataResult.address;
+
+                string addressToGeocode = address;
+
+                BasicGeoposition queryHint = new BasicGeoposition();
+                queryHint.Latitude = 47.643;
+                queryHint.Longitude = -122.131;
+                Geopoint hintPoint = new Geopoint(queryHint);
+
+                MapLocationFinderResult mapResult = await MapLocationFinder.FindLocationsAsync(addressToGeocode, hintPoint, 3);
+
+                dataResult.Latitude = mapResult.Locations[0].Point.Position.Latitude;
+                dataResult.Longitude = mapResult.Locations[0].Point.Position.Longitude * -1;
+
+
+            }
+        }
+
+
+
     }
 }
+
+
+
+

@@ -42,7 +42,7 @@
             </AppBarButton>
             <AppBarButton x:Name="Aerialbtn"
                           Foreground="White"
-                          Icon = "World"
+                          Icon = "Globe"
                           Label="Change View" Click="MyStyleButton_Click"
                           >
 

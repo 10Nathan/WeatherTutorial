@@ -23,7 +23,7 @@ using Windows.UI.Xaml.Navigation;
 namespace WeatherTutorial
 {
    
-    public sealed partial class SearchDialog : ContentDialog
+    public sealed partial class AddLocationDialog : ContentDialog
     {
         double latitude1;
         double longitude1;
@@ -31,7 +31,8 @@ namespace WeatherTutorial
         DialogResult parent;
 
         private bool advancedSearch = false;
-        public SearchDialog(ref DialogResult param)
+
+        public AddLocationDialog(ref DialogResult param)
         {
             this.InitializeComponent();
 
@@ -62,48 +63,7 @@ namespace WeatherTutorial
             parent.Latitude = 20;
         }
 
-        private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
-        {
-        }
-
-        private void RadioButton_Click(object sender, RoutedEventArgs e)
-        {
-            if(advancedSearch == false)
-            {
-                Item1.Visibility = Visibility.Visible;
-                Item2.Visibility = Visibility.Visible;
-                OrLabel.Visibility = Visibility.Collapsed;
-                DownArrow.Visibility = Visibility.Collapsed;
-                UpArrow.Visibility = Visibility.Visible;
-                advancedSearch = true;
-            }
-            else
-            {
-                Item1.Visibility = Visibility.Collapsed;
-                Item2.Visibility = Visibility.Collapsed;
-                OrLabel.Visibility = Visibility.Visible;
-                DownArrow.Visibility = Visibility.Visible;
-                UpArrow.Visibility = Visibility.Collapsed;
-
-                advancedSearch = false;
-            }
-            
-        }
-
-        private void DownArrow_PointerEntered(object sender, PointerRoutedEventArgs e)
-        {
-            AdvnacedButton.Foreground = new SolidColorBrush(Colors.LightGray);
-            DownArrow.Foreground = new SolidColorBrush(Colors.LightGray);
-            UpArrow.Foreground = new SolidColorBrush(Colors.LightGray);
-        }
-
-        private void DownArrow_PointerExited(object sender, PointerRoutedEventArgs e)
-        {
-            AdvnacedButton.Foreground = new SolidColorBrush(Colors.Black);
-            DownArrow.Foreground = new SolidColorBrush(Colors.Black);
-            UpArrow.Foreground = new SolidColorBrush(Colors.Black);
-        }
-
+        
         private void ContentDialog_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)
         {
             parent.Latitude = latitude1;
