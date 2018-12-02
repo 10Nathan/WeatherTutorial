@@ -12,25 +12,12 @@
 
         <Grid>
         <maps:MapControl x:Name="MapControl"
-                              Height="auto" MapServiceToken="9fxJMmFfHcYo6nXiX1A9~eKNpXXS658DATXPVw6Iapg~AoVg2pR4U3lQnMAaFPBVMZ76t1o5T3WTyCBi24ae2kq6kLqTZgvgZTcuDr-bKa7B" Margin="0,0,0,70"/>
+                              Height="auto" MapServiceToken="9fxJMmFfHcYo6nXiX1A9~eKNpXXS658DATXPVw6Iapg~AoVg2pR4U3lQnMAaFPBVMZ76t1o5T3WTyCBi24ae2kq6kLqTZgvgZTcuDr-bKa7B" Margin="0,0,0,0"/>
         <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Left" >
             
             <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Orientation="Horizontal">
-                <Button x:Name="MyStyleButton"
-                        Content="Aerial"
-                        Width="100"
-                        Height="50"
-                        Margin="15,0,0,10"
-                        Click="MyStyleButton_Click"
-                        />
-
-                <Button x:Name="Button"
-                        Content="Search Location"
-                        Width="auto"
-                        Height="50"
-                        Margin="15,0,0,10"
-                        Click="Search_Click"
-                        />
+               
+               
                 <!--<Button.Template>
                         <ControlTemplate>
                             <Border Background="{TemplateBinding Background}"
@@ -44,4 +31,23 @@
             </StackPanel>
         </StackPanel>
     </Grid>
+    <Page.BottomAppBar>
+        <CommandBar ClosedDisplayMode="Compact" Background="#344A61">
+            <AppBarButton x:Name="searchbt"
+                          Foreground="White"
+                          Icon = "Find"
+                          Label="Search Location" Click="Search_Click"
+                          >
+
+            </AppBarButton>
+            <AppBarButton x:Name="Aerialbtn"
+                          Foreground="White"
+                          Icon = "World"
+                          Label="Change View" Click="MyStyleButton_Click"
+                          >
+
+            </AppBarButton>
+
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>
