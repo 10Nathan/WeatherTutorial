@@ -11,7 +11,7 @@
 
 
         <Grid>
-        <maps:MapControl x:Name="MapControl"
+        <maps:MapControl x:Name="mapControl"
                               Height="auto" MapServiceToken="9fxJMmFfHcYo6nXiX1A9~eKNpXXS658DATXPVw6Iapg~AoVg2pR4U3lQnMAaFPBVMZ76t1o5T3WTyCBi24ae2kq6kLqTZgvgZTcuDr-bKa7B" Margin="0,0,0,0"/>
         <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Left" >
             
