@@ -9,10 +9,14 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <ListBox>
-            <TextBlock Text="Arial" FontFamily="Arial"/>
-            <TextBlock Text="Courier New" FontFamily="Courier New"/>
-            <TextBlock Text="Times New Roman" FontFamily="Times New Roman"/>
+        <ListBox Background="White">
+            <RadioButton Content="Arial" FontFamily="Arial"/>
+            <StackPanel Orientation="Horizontal" Visibility="Collapsed">
+                <TextBlock Text="Starting Location:" Margin="0,0,0,0"/>
+                <TextBlock Text="Destination: " Margin="150,0,0,0"/>
+            </StackPanel>
+            <RadioButton Content="Courier New" FontFamily="Courier New" Margin="0,-50,0,0"/>
+            <RadioButton Content="Times New Roman" FontFamily="Times New Roman"/>
         </ListBox>
     </Grid>
 </Page>
