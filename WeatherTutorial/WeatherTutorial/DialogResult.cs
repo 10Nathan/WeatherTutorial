@@ -12,5 +12,7 @@ namespace WeatherTutorial
 
         public double Longitude { get; set; }
 
+        public string address { get; set; }
+
     }
 }
