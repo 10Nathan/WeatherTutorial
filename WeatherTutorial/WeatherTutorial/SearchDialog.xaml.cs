@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -24,9 +25,8 @@ namespace WeatherTutorial
    
     public sealed partial class SearchDialog : ContentDialog
     {
-
-        public double Latitude { get; set; }
-        public double Longitude { get; set; }
+        double latitude1;
+        double longitude1;
 
         DialogResult parent;
 
@@ -36,9 +36,12 @@ namespace WeatherTutorial
             this.InitializeComponent();
 
             parent = param;
+
+            //TestMethod();
+
         }
 
-        private async void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
             string cityName = CityName.Text;
             ComboBoxItem state = (ComboBoxItem)StateName.SelectedItem;
@@ -50,22 +53,13 @@ namespace WeatherTutorial
 
             string address = cityName + ", " + stateTag;
 
-            string addressToGeocode = address;
+            parent.address = address;
 
-            BasicGeoposition queryHint = new BasicGeoposition();
-            queryHint.Latitude = 47.643;
-            queryHint.Longitude = -122.131;
-            Geopoint hintPoint = new Geopoint(queryHint);
+        }
 
-            MapLocationFinderResult result = await MapLocationFinder.FindLocationsAsync(addressToGeocode, hintPoint, 3);
-
-            parent.Latitude = result.Locations[0].Point.Position.Latitude;
-            parent.Longitude = result.Locations[0].Point.Position.Longitude * -1;
-
-            //DialogFrame.Navigate(typeof(MapPage), parent);
-
-            //DialogFrame.GoBack();
-
+        public void TestMethod()
+        {
+            parent.Latitude = 20;
         }
 
         private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
@@ -110,5 +104,10 @@ namespace WeatherTutorial
             UpArrow.Foreground = new SolidColorBrush(Colors.Black);
         }
 
+        private void ContentDialog_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)
+        {
+            parent.Latitude = latitude1;
+            parent.Longitude = longitude1;
+        }
     }
 }
