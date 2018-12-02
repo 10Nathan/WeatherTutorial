@@ -6,9 +6,9 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using UniversalWeather.Model;
+using WeatherTutorial.Model;
 
-namespace UniversalWeather.Helper
+namespace WeatherTutorial.Helper
 {
     public class Helper
     {

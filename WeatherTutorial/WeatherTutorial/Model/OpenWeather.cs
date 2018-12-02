@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UniversalWeather.Model
+namespace WeatherTutorial.Model
 {
     public class Coord
     {
