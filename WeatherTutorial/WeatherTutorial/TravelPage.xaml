@@ -9,7 +9,10 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="This is Travel page" VerticalAlignment="Top" Height="130" Width="764" FontSize="24"/>
-
+        <ListBox>
+            <TextBlock Text="Arial" FontFamily="Arial"/>
+            <TextBlock Text="Courier New" FontFamily="Courier New"/>
+            <TextBlock Text="Times New Roman" FontFamily="Times New Roman"/>
+        </ListBox>
     </Grid>
 </Page>

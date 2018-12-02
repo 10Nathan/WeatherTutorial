@@ -1,0 +1,114 @@
+﻿<ContentDialog
+    x:Class="WeatherTutorial.SearchDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WeatherTutorial"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    PrimaryButtonText="Search"
+    SecondaryButtonText="Cancel"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+
+    <Grid Margin="0,0,0,0">
+        <StackPanel Margin="0,20,0,0">
+            <TextBlock Text="Search Location" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24"></TextBlock>
+            
+            <StackPanel Orientation="Horizontal" Margin="0,15,0,10">
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <!--<TextBlock Text="Enter City: " VerticalAlignment="Center"></TextBlock>-->
+                    <TextBox Margin="10,0,0,0" Width="140" Height="20" PlaceholderText="Enter City" FontStyle="Italic"></TextBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <!--<TextBlock Text="Select State: " VerticalAlignment="Center" Margin="30,10,0,0"></TextBlock>-->
+                    <ComboBox PlaceholderText="Slect State" Margin="50,10,0,0" Width="140" FontStyle="Italic">
+                        <ComboBoxItem Content="Alabama - AL"></ComboBoxItem>
+                        <ComboBoxItem Content="Alaska - AK"></ComboBoxItem>
+                        <ComboBoxItem Content="Arizona - AZ"></ComboBoxItem>
+                        <ComboBoxItem Content="Arkansas - AR"></ComboBoxItem>
+                        <ComboBoxItem Content="California - CA"></ComboBoxItem>
+                        <ComboBoxItem Content="Colorado - CO"></ComboBoxItem>
+                        <ComboBoxItem Content="Connecticut - CT"></ComboBoxItem>
+                        <ComboBoxItem Content="Delaware - DE"></ComboBoxItem>
+                        <ComboBoxItem Content="Florida - FL"></ComboBoxItem>
+                        <ComboBoxItem Content="Georgia - GA"></ComboBoxItem>
+                        <ComboBoxItem Content="Hawaii - HI"></ComboBoxItem>
+                        <ComboBoxItem Content="Idaho - ID"></ComboBoxItem>
+                        <ComboBoxItem Content="Illinois - IL"></ComboBoxItem>
+                        <ComboBoxItem Content="Indiana - IN"></ComboBoxItem>
+                        <ComboBoxItem Content="Iowa - IA"></ComboBoxItem>
+                        <ComboBoxItem Content="Kansas - KS"></ComboBoxItem>
+                        <ComboBoxItem Content="Kentucky - KY"></ComboBoxItem>
+                        <ComboBoxItem Content="Louisiana - LA"></ComboBoxItem>
+                        <ComboBoxItem Content="Maine - ME"></ComboBoxItem>
+                        <ComboBoxItem Content="Maryland - MD"></ComboBoxItem>
+                        <ComboBoxItem Content="Massachusetts - MA"></ComboBoxItem>
+                        <ComboBoxItem Content="Michigan - MI"></ComboBoxItem>
+                        <ComboBoxItem Content="Minnesota - MN"></ComboBoxItem>
+                        <ComboBoxItem Content="Mississippi - MS"></ComboBoxItem>
+                        <ComboBoxItem Content="Missouri - MO"></ComboBoxItem>
+                        <ComboBoxItem Content="Montana - MT"></ComboBoxItem>
+                        <ComboBoxItem Content="Nebraska - NE"></ComboBoxItem>
+                        <ComboBoxItem Content="Nevada - NV"></ComboBoxItem>
+                        <ComboBoxItem Content="New Hampshire - NH"></ComboBoxItem>
+                        <ComboBoxItem Content="New Jersey - NJ"></ComboBoxItem>
+                        <ComboBoxItem Content="New Mexico - NM"></ComboBoxItem>
+                        <ComboBoxItem Content="New York - NY"></ComboBoxItem>
+                        <ComboBoxItem Content="North Carolina - NC"></ComboBoxItem>
+                        <ComboBoxItem Content="North Dakota - ND"></ComboBoxItem>
+                        <ComboBoxItem Content="Ohio - OH"></ComboBoxItem>
+                        <ComboBoxItem Content="Oklahoma - OK"></ComboBoxItem>
+                        <ComboBoxItem Content="Oregon - OR"></ComboBoxItem>
+                        <ComboBoxItem Content="Pennsylvania - PA"></ComboBoxItem>
+                        <ComboBoxItem Content="Rhode Island - RI"></ComboBoxItem>
+                        <ComboBoxItem Content="South Carolina - SC"></ComboBoxItem>
+                        <ComboBoxItem Content="South Dakota - SD"></ComboBoxItem>
+                        <ComboBoxItem Content="Tennessee - TN"></ComboBoxItem>
+                        <ComboBoxItem Content="Texas - TX"></ComboBoxItem>
+                        <ComboBoxItem Content="Utah - UT"></ComboBoxItem>
+                        <ComboBoxItem Content="Vermont - VT"></ComboBoxItem>
+                        <ComboBoxItem Content="Virginia - VA"></ComboBoxItem>
+                        <ComboBoxItem Content="Washington - WA"></ComboBoxItem>
+                        <ComboBoxItem Content="West Virginia - WV"></ComboBoxItem>
+                        <ComboBoxItem Content="Wisconsin - WI"></ComboBoxItem>
+                        <ComboBoxItem Content="Wyoming - WY"></ComboBoxItem>
+
+                    </ComboBox>
+
+                </StackPanel>
+            </StackPanel>
+            <TextBlock Name="OrLabel" Margin="0,15,0,0" Text="------ OR ------" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="LightGray" Visibility="Visible"></TextBlock>
+
+            <StackPanel Name="Item1" HorizontalAlignment="Left" Margin="0,15,0,0" Orientation="Horizontal" Visibility="Collapsed">
+                <TextBox Margin="10,0,0,0" Width="140" Height="20" PlaceholderText="Street Number" FontStyle="Italic"></TextBox>
+                <TextBox Margin="50,0,0,0" Width="140" Height="20" PlaceholderText="Street Name" FontStyle="Italic"></TextBox>
+            </StackPanel>
+
+            <StackPanel Name="Item2" HorizontalAlignment="Left" Margin="0,25,0,0" Orientation="Horizontal" Visibility="Collapsed">
+                <TextBox Margin="10,0,0,0" Width="140" Height="20" PlaceholderText="Zip Code" FontStyle="Italic"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                <RadioButton Content="Advanced Search" HorizontalAlignment="Center" Click="RadioButton_Click"></RadioButton>
+                <FontIcon Name="DownArrow" FontFamily="Segoe MDL2 Assets" Glyph="&#xE70D;" Margin="0,0,0,0" Visibility="Visible" FontSize="15"/>
+                <FontIcon Name="MapUpArrow" FontFamily="Segoe MDL2 Assets" Glyph="&#xE70E;" Margin="-16,0,0,0" Visibility="Collapsed"/>
+            </StackPanel>
+            <StackPanel>
+                
+            </StackPanel>
+        </StackPanel>
+
+
+
+
+
+
+
+
+
+
+
+    </Grid>
+</ContentDialog>

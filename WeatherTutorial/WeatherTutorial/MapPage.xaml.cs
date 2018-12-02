@@ -25,11 +25,14 @@ namespace WeatherTutorial
     /// </summary>
     public sealed partial class MapPage : Page
     {
+        MainPage mainPage = new MainPage();
         public MapPage()
         {
             this.InitializeComponent();
             MapControl.Loaded += MapControl_Loaded;
             MapControl.MapTapped += MapControl_MapTapped;
+
+
         }
 
 
@@ -46,17 +49,17 @@ namespace WeatherTutorial
         }
 
        
-        private void MyStyleButton_Click(object sender, RoutedEventArgs e)
+        public void MyStyleButton_Click(object sender, RoutedEventArgs e)
         {
             if(MapControl.Style == MapStyle.Aerial)
             {
                 MapControl.Style = MapStyle.Road;
-                MyStyleButton.Content = "Aerial";
+                //MyStyleButton.Content = "Aerial";
             }
             else
             {
                 MapControl.Style = MapStyle.Aerial;
-                MyStyleButton.Content = "Road";
+                //MyStyleButton.Content = "Road";
             }
         }
 
@@ -67,6 +70,17 @@ namespace WeatherTutorial
                             $"Longitude: {tappedGeoPosition.Longitude}";
             var messageDialog = new MessageDialog(status);
             await messageDialog.ShowAsync();
+        }
+
+        public void ChangeMap()
+        {
+            this.MapControl.Style = MapStyle.Aerial;
+        }
+
+        private async void Search_Click(object sender, RoutedEventArgs e)
+        {
+            SearchDialog dialog = new SearchDialog();
+            await dialog.ShowAsync();
         }
     }
 }

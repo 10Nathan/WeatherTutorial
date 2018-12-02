@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -25,7 +26,15 @@ namespace WeatherTutorial
         public MainPage()
         {
             this.InitializeComponent();
+            hamburgerColor = MapBackground.Background;
         }
+
+        private Brush hamburgerColor;
+        private bool MapClicked = false;
+        private bool WeatherClicked = false;
+        private bool TravelClicked = false;
+        private bool SettingsClicked = false;
+        private MapPage mapPage;
 
         private void MenuItemClick(object sender, RoutedEventArgs e)
         {
@@ -36,19 +45,40 @@ namespace WeatherTutorial
                 switch(radioButton.Tag.ToString())
                 {
                     case "Map":
-                        MainFrame.Navigate(typeof(MapPage));
-                        AerialIcon.Visibility = Visibility.Visible;
-                        AerialText.Visibility = Visibility.Visible;
+                        if (MapClicked == true)
+                        {
+                            Disable_DropDownItems();
+                            MapClicked = false;
+                        }
+                        else
+                        {
+                            MapClicked = true;
+
+                            if(MainFrame.Name != "MapPage")
+                            {
+                                mapPage = new MapPage();
+                                MainFrame.Navigate(typeof(MapPage));
+                                MainFrame.Name = "MapPage";
+                            }
+                            MapDownArrow.Visibility = Visibility.Collapsed;
+                            MapUpArrow.Visibility = Visibility.Visible;
+                            FindLocation.Visibility = Visibility.Visible;
+                            Aerial.Visibility = Visibility.Visible;
+                        }
+                        
+
                         break;
                     case "Weather":
+                        MainFrame.Name = "WeatherPage";
+                        Disable_DropDownItems();
                         MainFrame.Navigate(typeof(WeatherPage));
-                        AerialIcon.Visibility = Visibility.Collapsed;
-                        AerialText.Visibility = Visibility.Collapsed;
                         break;
                     case "Travel":
+                        Disable_DropDownItems();
                         MainFrame.Navigate(typeof(TravelPage));
                         break;
                     case "Settings":
+                        Disable_DropDownItems();
                         MainFrame.Navigate(typeof(SettingsPage));
                         break;
                         
@@ -61,6 +91,69 @@ namespace WeatherTutorial
             this.MySplitView.IsPaneOpen = this.MySplitView.IsPaneOpen ? false : true;
         }
 
+        private void RadioButton_PointerEnter(object sender, PointerRoutedEventArgs e)
+        {
+            var radioButton = sender as RadioButton;
+
+            switch (radioButton.Tag.ToString())
+            {
+                case "Map":
+                    MapBackground.Background = new SolidColorBrush(Colors.LightGray);
+                    break;
+                case "Weather":
+                    WeatherBackground.Background = new SolidColorBrush(Colors.LightGray);
+                    break;
+                case "Travel":
+                    Travelbackground.Background = new SolidColorBrush(Colors.LightGray);
+                    break;
+                case "Settings":
+                    SettingBackground.Background = new SolidColorBrush(Colors.LightGray);
+                    break;
+                case "Find":
+                    FindBackground.Background = new SolidColorBrush(Colors.LightGray);
+                    break;
+                case "Aerial":
+                    AerialBackground.Background = new SolidColorBrush(Colors.LightGray);
+                    break;
+
+            }
+        }
+
+        private void RadioButton_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            var radioButton = sender as RadioButton;
+
+            switch (radioButton.Tag.ToString())
+            {
+                case "Map":
+                    MapBackground.Background = hamburgerColor;
+                    break;
+                case "Weather":
+                    WeatherBackground.Background = hamburgerColor;
+                    break;
+                case "Travel":
+                    Travelbackground.Background = hamburgerColor;
+                    break;
+                case "Settings":
+                    SettingBackground.Background = hamburgerColor;
+                    break;
+                case "Find":
+                    FindBackground.Background = hamburgerColor;
+                    break;
+                case "Aerial":
+                    AerialBackground.Background = hamburgerColor;
+                    break;
+
+            }
+        }
+
+        public void Disable_DropDownItems()
+        {
+            MapDownArrow.Visibility = Visibility.Visible;
+            MapUpArrow.Visibility = Visibility.Collapsed;
+            FindLocation.Visibility = Visibility.Collapsed;
+            Aerial.Visibility = Visibility.Collapsed;
+        }
 
     }
 }
