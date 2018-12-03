@@ -60,25 +60,26 @@ namespace WeatherTutorial
                                 MainFrame.Navigate(typeof(MapPage));
                                 MainFrame.Name = "MapPage";
                             }
-                            MapDownArrow.Visibility = Visibility.Collapsed;
-                            MapUpArrow.Visibility = Visibility.Visible;
-                            FindLocation.Visibility = Visibility.Visible;
-                            Aerial.Visibility = Visibility.Visible;
+
                         }
-                        
+                        Disable_DropDownItems();
+                        radioMark.Visibility = Visibility.Visible;
 
                         break;
                     case "Weather":
                         MainFrame.Name = "WeatherPage";
                         Disable_DropDownItems();
+                        weatherMark.Visibility = Visibility.Visible;
                         MainFrame.Navigate(typeof(WeatherPage));
                         break;
                     case "Travel":
                         Disable_DropDownItems();
+                        travelMark.Visibility = Visibility.Visible;
                         MainFrame.Navigate(typeof(TravelPage));
                         break;
                     case "Settings":
                         Disable_DropDownItems();
+                        settingsMark.Visibility = Visibility.Visible;
                         MainFrame.Navigate(typeof(SettingsPage));
                         break;
                         
@@ -109,12 +110,6 @@ namespace WeatherTutorial
                 case "Settings":
                     SettingBackground.Background = new SolidColorBrush(Colors.LightGray);
                     break;
-                case "Find":
-                    FindBackground.Background = new SolidColorBrush(Colors.LightGray);
-                    break;
-                case "Aerial":
-                    AerialBackground.Background = new SolidColorBrush(Colors.LightGray);
-                    break;
 
             }
         }
@@ -137,22 +132,17 @@ namespace WeatherTutorial
                 case "Settings":
                     SettingBackground.Background = hamburgerColor;
                     break;
-                case "Find":
-                    FindBackground.Background = hamburgerColor;
-                    break;
-                case "Aerial":
-                    AerialBackground.Background = hamburgerColor;
-                    break;
 
             }
         }
 
         public void Disable_DropDownItems()
         {
-            MapDownArrow.Visibility = Visibility.Visible;
-            MapUpArrow.Visibility = Visibility.Collapsed;
-            FindLocation.Visibility = Visibility.Collapsed;
-            Aerial.Visibility = Visibility.Collapsed;
+            radioMark.Visibility = Visibility.Collapsed;
+            weatherMark.Visibility = Visibility.Collapsed;
+            travelMark.Visibility = Visibility.Collapsed;
+            settingsMark.Visibility = Visibility.Collapsed;
+
         }
 
     }

@@ -40,41 +40,30 @@
                         <StackPanel Name="MapBackground" Orientation="Horizontal" Margin="0,-15,-15,-15" >
                             <SymbolIcon Symbol="Map" Margin="5,0,0,0"/>
                             <TextBlock Padding="0,8" Name="MapText" Text="Map" Margin="15,0,0,0" Foreground="Black" Width="242" Height="38"/>
-                            <FontIcon Name="MapDownArrow" FontFamily="Segoe MDL2 Assets" Glyph="&#xE70D;" Margin="-15,0,0,0" Visibility="Visible"/>
-                            <FontIcon Name="MapUpArrow" FontFamily="Segoe MDL2 Assets" Glyph="&#xE70E;" Margin="-20,0,0,0" Visibility="Collapsed"/>
+                            <FontIcon Name="radioMark" FontFamily="Segoe MDL2 Assets" Glyph="&#xE73E;" Margin="-15,0,0,0" Visibility="Collapsed"/>
                         </StackPanel>
                     </RadioButton>
-                    
-                            <RadioButton Name="FindLocation" Tag="Find" Click="MenuItemClick" Width="307" Background="Transparent"  PointerEntered="RadioButton_PointerEnter" PointerExited="RadioButton_PointerExited" Height="52" Visibility="Collapsed">
-                                <StackPanel Name="FindBackground" Orientation="Horizontal" Margin="0,-15,-15,-15" >
-                                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE9AC;" Margin="50,0,0,0"/>
-                                    <TextBlock Padding="0,8" Name="FindText" Text="Find" Margin="15,0,0,0" Foreground="Black" Width="242" Height="38"/>
-                                </StackPanel>
-                            </RadioButton>
-                            <RadioButton Name="Aerial" Tag="Aerial" Click="MenuItemClick" Width="307" Background="Transparent"  PointerEntered="RadioButton_PointerEnter" PointerExited="RadioButton_PointerExited" Height="52" Visibility="Collapsed" >
-                                <StackPanel Name="AerialBackground" Orientation="Horizontal" Margin="0,-15,-15,-15" >
-                                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE9AC;" Margin="50,0,0,0"/>
-                                    <TextBlock Padding="0,8" Name="AerialText" Text="Aerial" Margin="15,0,0,0" Foreground="Black" Width="242" Height="38"/>
-                                </StackPanel>
-                            </RadioButton>
 
 
                     <RadioButton Height="52" HorizontalContentAlignment="Left" Tag="Weather" Click="MenuItemClick" Width="307" HorizontalAlignment="Left" PointerEntered="RadioButton_PointerEnter" PointerExited="RadioButton_PointerExited" VerticalContentAlignment="Center">
                         <StackPanel Name="WeatherBackground" Orientation="Horizontal" Margin="0,-15,-15,-15" >
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE706;" Margin="5,0,0,0"/>
                             <TextBlock Name="WeatherText" Text="Weather" Margin="15,0,0,0" Foreground="Black" Width="242" Height="38" TextAlignment="Left" Padding="0,8" />
+                            <FontIcon Name="weatherMark" FontFamily="Segoe MDL2 Assets" Glyph="&#xE73E;" Margin="-15,0,0,0" Visibility="Collapsed"/>
                         </StackPanel>
                     </RadioButton>
                     <RadioButton Height="52" HorizontalContentAlignment="Left" Tag="Travel" Click="MenuItemClick" Width="307" PointerEntered="RadioButton_PointerEnter" PointerExited="RadioButton_PointerExited">
                         <StackPanel Orientation="Horizontal" Name="Travelbackground" Margin="0,-15,-15,-15">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7EC;" Margin="5,0,0,0"/>
                             <TextBlock Padding="0,8" Name="TravelText" Text="Travel" Margin="15,0,0,0" Foreground="Black" Width="242" Height="38"/>
+                            <FontIcon Name="travelMark" FontFamily="Segoe MDL2 Assets" Glyph="&#xE73E;" Margin="-15,0,0,0" Visibility="Collapsed"/>
                         </StackPanel>
                     </RadioButton>
                     <RadioButton Height="52" HorizontalContentAlignment="Left" Tag="Settings" Click="MenuItemClick" Width="307" PointerEntered="RadioButton_PointerEnter" PointerExited="RadioButton_PointerExited">
                         <StackPanel Orientation="Horizontal" Name="SettingBackground" Margin="0,-15,-15,-15">
                             <SymbolIcon Symbol="Setting" Margin="5,0,0,0"/>
                             <TextBlock Padding="0,8" Name="SettingsText" Text="Settings" Margin="15,0,0,0" Foreground="Black" Width="242" Height="38"/>
+                            <FontIcon Name="settingsMark" FontFamily="Segoe MDL2 Assets" Glyph="&#xE73E;" Margin="-15,0,0,0" Visibility="Collapsed"/>
                         </StackPanel>
                     </RadioButton>
 
