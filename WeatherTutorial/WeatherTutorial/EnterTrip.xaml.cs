@@ -40,6 +40,8 @@ namespace WeatherTutorial
             //}
 
             newTrip.tripName = tripName.Text;
+            newTrip.startingPoint = startingPoint.Text;
+            newTrip.destination = destination.Text;
 
 
         }

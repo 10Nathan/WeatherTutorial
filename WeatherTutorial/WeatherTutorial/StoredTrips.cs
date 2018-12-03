@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace WeatherTutorial
 {
-    public class AddTrip
+    public class StoredTrips
     {
         public string tripName { get; set; }
         public string startingPoint { get; set; }
         public string destination { get; set; }
+
     }
 }

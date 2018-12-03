@@ -26,6 +26,8 @@ namespace WeatherTutorial
     {
 
         static List<ListViewItem> trips = new List<ListViewItem>();
+        static List<StoredTrips> storedTrips = new List<StoredTrips>();
+
         string newTrip;
 
         public TravelPage()
@@ -43,27 +45,24 @@ namespace WeatherTutorial
         private async void Trip_Click(object sender, RoutedEventArgs e)
         {
             AddTrip trip = new AddTrip();
+            StoredTrips newTrip = new StoredTrips();
 
             EnterTrip tripDialog = new EnterTrip(ref trip);
             var result = await tripDialog.ShowAsync();
 
 
             ListViewItem newButton = new ListViewItem();
-            //ListViewItem CopynewButton = new ListViewItem();
+
 
             if (result == ContentDialogResult.Primary)
             {
-                //newButton.TabIndex = count;
-                //newButton.PointerReleased += SubscribeButton_Click;
+
+                //stored the entered trip with startingPoint and destination
+                newTrip.tripName = trip.tripName;
+
 
                 trips.Add(newButton);
-
                 newButton.Content = trip.tripName;
-                //CopynewButton.Content = trip.tripName;
-                //count++;
-
-
-
                 listView.Items.Add(newButton);
             }
 
@@ -96,7 +95,16 @@ namespace WeatherTutorial
         {
             ListViewItem item = (ListViewItem)e.AddedItems?.FirstOrDefault();
 
-            string strItem = (string)item.Content;
+            if(item != null)
+            {
+                string strItem = (string)item.Content;
+
+                //listView.Items.Clear();
+
+                listView.Visibility = Visibility.Collapsed;
+                mapControl.Visibility = Visibility.Visible;
+            }
+            
         }
 
         private void Page_Loading(FrameworkElement sender, object args)

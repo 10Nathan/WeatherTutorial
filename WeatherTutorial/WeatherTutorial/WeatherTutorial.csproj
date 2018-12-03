@@ -119,6 +119,7 @@
     <Compile Include="SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="StoredTrips.cs" />
     <Compile Include="TravelPage.xaml.cs">
       <DependentUpon>TravelPage.xaml</DependentUpon>
     </Compile>

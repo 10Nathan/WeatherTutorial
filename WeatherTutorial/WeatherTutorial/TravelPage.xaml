@@ -1,19 +1,14 @@
 ﻿<Page
-    x:Class="WeatherTutorial.TravelPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:WeatherTutorial"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
+    x:Class="WeatherTutorial.TravelPage"
+    xmlns:maps="using:Windows.UI.Xaml.Controls.Maps"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loading="Page_Loading" >
-
-    <Grid>
-        <ListView Name="listView" Background="White" SelectionChanged="listView_SelectionChanged" IsItemClickEnabled="True" ItemClick="listView_ItemClick">
-
-        </ListView>
-        
-    </Grid>
 
     <Page.BottomAppBar>
         <CommandBar ClosedDisplayMode="Compact" Background="#344A61">
@@ -22,11 +17,20 @@
                           Foreground="White"
                           Icon = "Add"
                           Label="Add Trip" Click="Trip_Click"
-                          >
-
-            </AppBarButton>
+                          />
 
         </CommandBar>
     </Page.BottomAppBar>
+
+    <Grid>
+        <ListView x:Name="listView" Background="White" SelectionChanged="listView_SelectionChanged" IsItemClickEnabled="True" ItemClick="listView_ItemClick" Visibility="Visible"/>
+
+        <Frame x:Name="TravelFrame"/>
+
+        <maps:MapControl x:Name="mapControl"
+                              Height="auto" MapServiceToken="9fxJMmFfHcYo6nXiX1A9~eKNpXXS658DATXPVw6Iapg~AoVg2pR4U3lQnMAaFPBVMZ76t1o5T3WTyCBi24ae2kq6kLqTZgvgZTcuDr-bKa7B" Margin="0,0,0,0" Visibility="Collapsed"/>
+
+
+    </Grid>
 
 </Page>
