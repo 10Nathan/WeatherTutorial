@@ -20,8 +20,8 @@ namespace WeatherTutorial
     public sealed partial class EnterTrip : ContentDialog
     {
         List<string> currentTrips;
-        AddTrip newTrip;
-        public EnterTrip(ref AddTrip trip)
+        StoredTrips newTrip;
+        public EnterTrip(ref StoredTrips trip)
         {
             this.InitializeComponent();
 

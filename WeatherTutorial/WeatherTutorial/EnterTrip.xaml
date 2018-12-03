@@ -14,9 +14,9 @@
 
     <Grid>
         <StackPanel>
-            <TextBox Name="tripName" PlaceholderText="Enter Trip" FontStyle="Italic" HorizontalAlignment="Left" Margin="0,22,0,0" TextWrapping="Wrap" Text="Enter Trip Name" VerticalAlignment="Top" Width="233"/>
-            <TextBox Name="startingPoint" PlaceholderText="Starting" FontStyle="Italic" HorizontalAlignment="Left" Margin="0,22,0,0" TextWrapping="Wrap" Text="Starting" VerticalAlignment="Top" Width="233"/>
-            <TextBox Name="destination" PlaceholderText="Enter Trip" FontStyle="Italic" HorizontalAlignment="Left" Margin="0,22,0,0" TextWrapping="Wrap" Text="Destination" VerticalAlignment="Top" Width="233"/>
+            <TextBox Name="tripName" PlaceholderText="Enter Trip" FontStyle="Italic" HorizontalAlignment="Left" Margin="0,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="233"/>
+            <TextBox Name="startingPoint" PlaceholderText="Starting" FontStyle="Italic" HorizontalAlignment="Left" Margin="0,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="233"/>
+            <TextBox Name="destination" PlaceholderText="Enter Trip" FontStyle="Italic" HorizontalAlignment="Left" Margin="0,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="233"/>
         </StackPanel>
     </Grid>
 </ContentDialog>
