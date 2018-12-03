@@ -95,11 +95,15 @@
     <Compile Include="AddLocation.xaml.cs">
       <DependentUpon>AddLocation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddTrip.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="CommonWeather\CommonWeather.cs" />
     <Compile Include="DialogResult.cs" />
+    <Compile Include="EnterTrip.xaml.cs">
+      <DependentUpon>EnterTrip.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Helper\Helper.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -145,6 +149,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="AddLocation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EnterTrip.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

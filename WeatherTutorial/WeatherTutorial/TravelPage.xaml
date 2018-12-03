@@ -6,12 +6,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loading="Page_Loading" >
 
     <Grid>
-        <ListView Name="listView" Background="White">
-            <RadioButton Content="Hello" Width="5000" Click="RadioButton_Click_1"></RadioButton>
-            
+        <ListView Name="listView" Background="White" SelectionChanged="listView_SelectionChanged" IsItemClickEnabled="True" ItemClick="listView_ItemClick">
 
         </ListView>
         

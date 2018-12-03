@@ -120,10 +120,11 @@ namespace WeatherTutorial
                 // Create a XAML border.
                 Border border = new Border
                 {
+                    CornerRadius = new CornerRadius(10),
                     Height = 100,
                     Width = 100,
-                    BorderBrush = new SolidColorBrush(Windows.UI.Colors.Blue),
-                    BorderThickness = new Thickness(5),
+                    BorderBrush = new SolidColorBrush(Windows.UI.Colors.Orange),
+                    BorderThickness = new Thickness(2),
                 };
 
                 // Center the map over the POI.
