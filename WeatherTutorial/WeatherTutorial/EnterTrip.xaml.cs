@@ -38,10 +38,17 @@ namespace WeatherTutorial
             //        int a = 12;
             //    }
             //}
+            ComboBoxItem state = (ComboBoxItem)StartingStateName.SelectedItem;
+            string stateTag = state.Tag.ToString();
+
 
             newTrip.tripName = tripName.Text;
-            newTrip.startingPoint = startingPoint.Text;
-            newTrip.destination = destination.Text;
+            newTrip.startingPoint = startingPoint.Text + ", " + stateTag;
+
+            state = (ComboBoxItem)DestinationStateName.SelectedItem;
+            stateTag = state.Tag.ToString();
+
+            newTrip.destination = destination.Text + ", " + stateTag;
 
 
         }

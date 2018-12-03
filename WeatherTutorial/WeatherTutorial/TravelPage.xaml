@@ -18,18 +18,25 @@
                           Icon = "Add"
                           Label="Add Trip" Click="Trip_Click"
                           />
+            <AppBarButton x:Name="backButton"
+                          Foreground="White"
+                          Icon = "Back"
+                          Label="Add Trip" Click="Button_Click"
+                          IsEnabled="False"
+                          />
 
         </CommandBar>
     </Page.BottomAppBar>
 
     <Grid>
-        <ListView x:Name="listView" Background="White" SelectionChanged="listView_SelectionChanged" IsItemClickEnabled="True" ItemClick="listView_ItemClick" Visibility="Visible"/>
+        <ListView x:Name="listView" Background="White" SelectionChanged="listView_SelectionChanged" IsItemClickEnabled="True" ItemClick="listView_ItemClick" Visibility="Visible" IsEnabled="True"/>
 
         <Frame x:Name="TravelFrame"/>
 
-        <maps:MapControl x:Name="mapControl"
-                              Height="auto" MapServiceToken="9fxJMmFfHcYo6nXiX1A9~eKNpXXS658DATXPVw6Iapg~AoVg2pR4U3lQnMAaFPBVMZ76t1o5T3WTyCBi24ae2kq6kLqTZgvgZTcuDr-bKa7B" Margin="0,0,0,0" Visibility="Collapsed"/>
 
+        <maps:MapControl x:Name="mapControl"
+                              Height="auto" MapServiceToken="9fxJMmFfHcYo6nXiX1A9~eKNpXXS658DATXPVw6Iapg~AoVg2pR4U3lQnMAaFPBVMZ76t1o5T3WTyCBi24ae2kq6kLqTZgvgZTcuDr-bKa7B" Margin="0,0,0,0" Visibility="Collapsed">
+        </maps:MapControl>
 
     </Grid>
 

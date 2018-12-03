@@ -33,6 +33,8 @@ namespace WeatherTutorial
         static List<StoredTrips> storedTrips = new List<StoredTrips>();
 
         string newTrip;
+        private bool clicked = false;
+        MapRouteView viewOfRoute;
 
         public TravelPage()
         {
@@ -95,119 +97,136 @@ namespace WeatherTutorial
 
         private void listView_ItemClick(object sender, ItemClickEventArgs e)
         {
+            ListViewItem item = sender as ListViewItem;
+
+            //string items = listView.SelectedItem.ToString();
 
             int c = 123;
+
+            clicked = false;
         }
 
         private async void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ListViewItem item = (ListViewItem)e.AddedItems?.FirstOrDefault();
 
-            if(item != null)
+            if (clicked != true)
             {
-                string strItem = (string)item.Content;
-
-                //listView.Items.Clear();
-
-                listView.Visibility = Visibility.Collapsed;
-                mapControl.Visibility = Visibility.Visible;
-
-                int i;
-                string addressToGeocode = "";
-                string DestinationAddress = "";
-
-                for (i = 0; i < storedTrips.Count; i++)
+                if (mapControl.Visibility != Visibility.Visible)
                 {
-                    if(strItem == storedTrips[i].tripName)
+                    if (item != null)
                     {
-                        addressToGeocode = storedTrips[i].startingPoint;
-                        DestinationAddress = storedTrips[i].destination;
+                        if (viewOfRoute != null)
+                        {
+                            mapControl.Routes.Remove(viewOfRoute);
+                        }
+
+                        string strItem = (string)item.Content;
+
+                        //listView.Items.Clear();
+
+                        backButton.IsEnabled = true;
+                        listView.Visibility = Visibility.Collapsed;
+                        //listView.IsItemClickEnabled = false;
+                        //listView.IsEnabled = false;
+                        mapControl.Visibility = Visibility.Visible;
+
+
+                        int i;
+                        string addressToGeocode = "";
+                        string DestinationAddress = "";
+
+                        for (i = 0; i < storedTrips.Count; i++)
+                        {
+                            if (strItem == storedTrips[i].tripName)
+                            {
+                                addressToGeocode = storedTrips[i].startingPoint;
+                                DestinationAddress = storedTrips[i].destination;
+                            }
+                        }
+
+
+
+
+                        BasicGeoposition queryHint = new BasicGeoposition();
+                        queryHint.Latitude = 47.643;
+                        queryHint.Longitude = -122.131;
+                        Geopoint hintPoint = new Geopoint(queryHint);
+
+                        MapLocationFinderResult StartingmapResult = await MapLocationFinder.FindLocationsAsync(addressToGeocode, hintPoint, 3);
+
+                        MapLocationFinderResult DestinationmapResult = await MapLocationFinder.FindLocationsAsync(DestinationAddress, hintPoint, 3);
+
+
+                        //// Specify a known location.
+                        //BasicGeoposition snPosition = new BasicGeoposition { Latitude = StartingmapResult.Locations[0].Point.Position.Latitude, Longitude = StartingmapResult.Locations[0].Point.Position.Longitude };
+                        //Geopoint snPoint = new Geopoint(snPosition);
+
+
+                        // Start at Microsoft in Redmond, Washington.
+                        BasicGeoposition startLocation = new BasicGeoposition() { Latitude = StartingmapResult.Locations[0].Point.Position.Latitude, Longitude = StartingmapResult.Locations[0].Point.Position.Longitude };
+
+                        // End at the city of Seattle, Washington.
+                        BasicGeoposition endLocation = new BasicGeoposition() { Latitude = DestinationmapResult.Locations[0].Point.Position.Latitude, Longitude = DestinationmapResult.Locations[0].Point.Position.Longitude };
+
+
+                        // Get the route between the points.
+                        MapRouteFinderResult routeResult =
+                              await MapRouteFinder.GetDrivingRouteAsync(
+                              new Geopoint(startLocation),
+                              new Geopoint(endLocation),
+                              MapRouteOptimization.Time,
+                              MapRouteRestrictions.None);
+
+                        if (routeResult.Status == MapRouteFinderStatus.Success)
+                        {
+                            // Use the route to initialize a MapRouteView.
+                            viewOfRoute = new MapRouteView(routeResult.Route);
+                            viewOfRoute.RouteColor = Colors.Yellow;
+                            viewOfRoute.OutlineColor = Colors.Black;
+
+                            // Add the new MapRouteView to the Routes collection
+                            // of the MapControl.
+                            mapControl.Routes.Add(viewOfRoute);
+
+                            // Fit the MapControl to the route.
+                            await mapControl.TrySetViewBoundsAsync(
+                                  routeResult.Route.BoundingBox,
+                                  null,
+                                  Windows.UI.Xaml.Controls.Maps.MapAnimationKind.None);
+                        }
+
+                        if (mapControl.Visibility != Visibility.Collapsed)
+                        {
+                            relaeseItems();
+                        }
+
+                        if (mapControl.Visibility == Visibility.Collapsed && backButton.IsEnabled == false)
+                        {
+                            recreateList();
+                        }
+
                     }
                 }
-
-
-                
-
-                BasicGeoposition queryHint = new BasicGeoposition();
-                queryHint.Latitude = 47.643;
-                queryHint.Longitude = -122.131;
-                Geopoint hintPoint = new Geopoint(queryHint);
-
-                MapLocationFinderResult StartingmapResult = await MapLocationFinder.FindLocationsAsync(addressToGeocode, hintPoint, 3);
-
-                MapLocationFinderResult DestinationmapResult = await MapLocationFinder.FindLocationsAsync(DestinationAddress, hintPoint, 3);
-
-
-                //// Specify a known location.
-                //BasicGeoposition snPosition = new BasicGeoposition { Latitude = StartingmapResult.Locations[0].Point.Position.Latitude, Longitude = StartingmapResult.Locations[0].Point.Position.Longitude };
-                //Geopoint snPoint = new Geopoint(snPosition);
-
-
-                // Start at Microsoft in Redmond, Washington.
-                BasicGeoposition startLocation = new BasicGeoposition() { Latitude = StartingmapResult.Locations[0].Point.Position.Latitude, Longitude = StartingmapResult.Locations[0].Point.Position.Longitude };
-
-                // End at the city of Seattle, Washington.
-                BasicGeoposition endLocation = new BasicGeoposition() { Latitude = DestinationmapResult.Locations[0].Point.Position.Latitude, Longitude = DestinationmapResult.Locations[0].Point.Position.Longitude };
-
-
-                // Get the route between the points.
-                MapRouteFinderResult routeResult =
-                      await MapRouteFinder.GetDrivingRouteAsync(
-                      new Geopoint(startLocation),
-                      new Geopoint(endLocation),
-                      MapRouteOptimization.Time,
-                      MapRouteRestrictions.None);
-
-                if (routeResult.Status == MapRouteFinderStatus.Success)
-                {
-                    // Use the route to initialize a MapRouteView.
-                    MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
-                    viewOfRoute.RouteColor = Colors.Yellow;
-                    viewOfRoute.OutlineColor = Colors.Black;
-
-                    // Add the new MapRouteView to the Routes collection
-                    // of the MapControl.
-                    mapControl.Routes.Add(viewOfRoute);
-
-                    // Fit the MapControl to the route.
-                    await mapControl.TrySetViewBoundsAsync(
-                          routeResult.Route.BoundingBox,
-                          null,
-                          Windows.UI.Xaml.Controls.Maps.MapAnimationKind.None);
-                }
-
-
-
-
-
-
-
-
-
-
-
-
-                //// Create a XAML border.
-                //Border border = new Border
-                //{
-                //    CornerRadius = new CornerRadius(10),
-                //    Height = 100,
-                //    Width = 100,
-                //    BorderBrush = new SolidColorBrush(Windows.UI.Colors.Orange),
-                //    BorderThickness = new Thickness(2),
-                //};
-
-                //// Center the map over the POI.
-                //mapControl.Center = snPoint;
-                //mapControl.ZoomLevel = 14;
-
-                //// Add XAML to the map.
-                //mapControl.Children.Add(border);
-                //MapControl.SetLocation(border, snPoint);
-                //MapControl.SetNormalizedAnchorPoint(border, new Point(0.5, 0.5));
+            }
+            else
+            {
+                clicked = false;
             }
 
         }
+
+
+        private void relaeseItems()
+        {
+            
+        }
+
+        private void recreateList()
+        {
+           
+        }
+
 
         private void Page_Loading(FrameworkElement sender, object args)
         {
@@ -223,6 +242,30 @@ namespace WeatherTutorial
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
             listView.Items.Clear();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            clicked = true;
+            //listView.SelectedItems.Clear();
+
+            backButton.IsEnabled = false;
+            mapControl.Visibility = Visibility.Collapsed;
+
+            //listView.Items.Clear();
+
+            //if (trips.Count != 0)
+            //{
+            //    for (int i = 0; i < trips.Count; i++)
+            //    {
+            //        listView.Items.Add(trips[i]);
+            //    }
+            //}
+
+            mapControl.Visibility = Visibility.Collapsed;
+            listView.Visibility = Visibility.Visible;
+
+            
         }
     }
 }
