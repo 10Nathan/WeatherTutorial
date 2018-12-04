@@ -61,8 +61,8 @@
                     </RadioButton>
                     <RadioButton Height="52" HorizontalContentAlignment="Left" Tag="Settings" Click="MenuItemClick" Width="307" PointerEntered="RadioButton_PointerEnter" PointerExited="RadioButton_PointerExited">
                         <StackPanel Orientation="Horizontal" Name="SettingBackground" Margin="0,-15,-15,-15">
-                            <SymbolIcon Symbol="Setting" Margin="5,0,0,0"/>
-                            <TextBlock Padding="0,8" Name="SettingsText" Text="Settings" Margin="15,0,0,0" Foreground="Black" Width="242" Height="38"/>
+                            <SymbolIcon Symbol="Important" Margin="5,0,0,0"/>
+                            <TextBlock Padding="0,8" Name="SettingsText" Text="About" Margin="15,0,0,0" Foreground="Black" Width="242" Height="38"/>
                             <FontIcon Name="settingsMark" FontFamily="Segoe MDL2 Assets" Glyph="&#xE73E;" Margin="-15,0,0,0" Visibility="Collapsed"/>
                         </StackPanel>
                     </RadioButton>

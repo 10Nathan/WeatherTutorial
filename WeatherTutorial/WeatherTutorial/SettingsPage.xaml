@@ -9,6 +9,70 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="This is Settings page" VerticalAlignment="Top" Height="130" Width="764" FontSize="24"/>
+        <StackPanel Grid.Row="5" Orientation="Vertical"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    >
+            <TextBlock HorizontalAlignment="Left" 
+                       TextWrapping="Wrap" 
+                       Text="ITravel" 
+                       VerticalAlignment="Top" 
+                       Height="130" 
+                       Width="764" 
+                       FontSize="72" 
+                       FontWeight="Bold" 
+                       FontStyle="Italic" 
+                       Foreground="#FF1010E2" TextAlignment="Center"
+                       
+                       />
+            <TextBlock HorizontalAlignment="Left" 
+                       TextWrapping="Wrap" 
+                       Text="By:" 
+                       VerticalAlignment="Top" 
+                       Height="130" 
+                       Width="764" 
+                       FontSize="72" 
+                       FontWeight="Bold" 
+                       FontStyle="Italic" 
+                       Foreground="#FF1010E2" TextAlignment="Center"
+                       
+                       />
+            <TextBlock HorizontalAlignment="Left" 
+                       TextWrapping="Wrap" 
+                       Text="Nathan Cobb" 
+                       VerticalAlignment="Top" 
+                       Height="130" 
+                       Width="764" 
+                       FontSize="72" 
+                       Foreground="#FF1010E2" 
+                       TextAlignment="Center" FontWeight="Bold" FontStyle="Italic" 
+                       />
+            <TextBlock HorizontalAlignment="Left" 
+                       TextWrapping="Wrap" 
+                       Text="And" 
+                       VerticalAlignment="Top" 
+                       Height="130" 
+                       Width="764" 
+                       FontSize="72" 
+                       FontWeight="Bold" 
+                       FontStyle="Italic" 
+                       Foreground="#FF1010E2" TextAlignment="Center"
+                       
+                       />
+            <TextBlock HorizontalAlignment="Left" 
+                       TextWrapping="Wrap" 
+                       Text="Colton Krantz" 
+                       VerticalAlignment="Top" 
+                       Height="130" 
+                       Width="764" 
+                       FontSize="72" 
+                       FontWeight="Bold" 
+                       FontStyle="Italic" 
+                       Foreground="#FF1010E2" 
+                       TextAlignment="Center"
+                       
+                       />
+
+        </StackPanel>
     </Grid>
 </Page>
