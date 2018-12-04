@@ -97,8 +97,9 @@ namespace WeatherTutorial
 
                 dataResult.Latitude = mapResult.Locations[0].Point.Position.Latitude;
                 dataResult.Longitude = mapResult.Locations[0].Point.Position.Longitude * -1;
-                Lat = dataResult.Latitude.ToString();
-                Lon = dataResult.Longitude.ToString();
+
+                Lat = mapResult.Locations[0].Point.Position.Latitude.ToString();
+                Lon = mapResult.Locations[0].Point.Position.Longitude.ToString();
 
                 var data = await Helper.Helper.GetWeather(Lat, Lon);
                 if (data != null)
