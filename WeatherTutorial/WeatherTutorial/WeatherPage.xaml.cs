@@ -32,17 +32,17 @@ namespace WeatherTutorial
         public WeatherPage()
         {
             this.InitializeComponent();
-            HideStatusBar();
+            //HideStatusBar();
         }
 
-        private void HideStatusBar()
-        {
-            if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 1, 0))
-            {
-                var titleBar = ApplicationView.GetForCurrentView().TitleBar;
+        //private void HideStatusBar()
+        //{
+        //    if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 1, 0))
+        //    {
+        //        var titleBar = ApplicationView.GetForCurrentView().TitleBar;
 
-            }
-        }
+        //    }
+        //}
 
         private async void btnGetWeather_Click(object sender, RoutedEventArgs e)
         {
