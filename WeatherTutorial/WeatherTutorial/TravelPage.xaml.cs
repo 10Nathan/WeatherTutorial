@@ -54,7 +54,7 @@ namespace WeatherTutorial
         public void populateListView()
         {
             
-            var itemsToAdd = connection.Table<StoredTrips>();
+            var itemsToAdd = connection.Table<AddTrip>();
             //string name;
             //string dest;
             //string start;
