@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using SQLite.Net.Attributes;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -23,9 +24,16 @@ namespace WeatherTutorial
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        public string path;
+        public SQLite.Net.SQLiteConnection connection;
         public MainPage()
         {
             this.InitializeComponent();
+            path = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "db.sqlite");
+            connection = new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), path);
+
+            connection.CreateTable<StoredTrips>();
+
             hamburgerColor = MapBackground.Background;
         }
 
