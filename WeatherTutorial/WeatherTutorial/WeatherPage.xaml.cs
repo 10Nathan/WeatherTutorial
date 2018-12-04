@@ -64,7 +64,7 @@ namespace WeatherTutorial
                 imgWeather.Source = image;
 
                 txtDescription.Text = $"{data.weather[0].description}";
-                txtHumidity.Text = $"Humidity : {data.main.humidity}";
+                txtHumidity.Text = $"Humidity : {data.main.humidity} %";
                 
                 txtFrh.Text = $"{data.main.temp} ℉";
             }
