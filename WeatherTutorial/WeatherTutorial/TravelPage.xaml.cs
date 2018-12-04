@@ -275,13 +275,7 @@ namespace WeatherTutorial
 
         private void Page_Loading(FrameworkElement sender, object args)
         {
-            if(trips.Count != 0)
-            {
-                for(int i = 0; i < trips.Count; i++)
-                {
-                    listView.Items.Add(trips[i]);
-                }
-            }
+           
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
