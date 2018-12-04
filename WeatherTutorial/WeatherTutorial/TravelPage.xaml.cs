@@ -47,7 +47,7 @@ namespace WeatherTutorial
             connection = new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), path);
 
             connection.CreateTable<AddTrip>();
-
+            populateListView();
 
         }
 
@@ -101,9 +101,9 @@ namespace WeatherTutorial
 
                 connection.Insert(new AddTrip()
                 {
-                    tripName = trip.tripName,
-                    destination = trip.destination,
-                    startingPoint = trip.tripName
+                    tripName = newTrip.tripName,
+                    destination = newTrip.destination,
+                    startingPoint = newTrip.tripName
                 });
 
                 trips.Add(newButton);
