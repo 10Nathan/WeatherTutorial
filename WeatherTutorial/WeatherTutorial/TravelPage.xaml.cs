@@ -286,8 +286,11 @@ namespace WeatherTutorial
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             clicked = true;
+
             listView.SelectedItem = null;
+
             backButton.IsEnabled = false;
+
             mapControl.Visibility = Visibility.Collapsed;
 
             //listView.Items.Clear();
@@ -304,6 +307,11 @@ namespace WeatherTutorial
             listView.Visibility = Visibility.Visible;
 
             
+        }
+
+        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

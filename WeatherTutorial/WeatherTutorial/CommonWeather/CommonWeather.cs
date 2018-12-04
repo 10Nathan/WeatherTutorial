@@ -15,7 +15,7 @@ namespace WeatherTutorial.CommonWeather
         {
             StringBuilder strBuilder = new StringBuilder(API_LINK);
 
-            strBuilder.AppendFormat("?lat=(0)&lon=(1)&APPID=(2)", lat, lon, API_KEY);
+            strBuilder.AppendFormat("?lat={0}&lon={1}&APPID={2}", lat, lon, API_KEY);
 
             return strBuilder.ToString();
         }

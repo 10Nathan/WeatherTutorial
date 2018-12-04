@@ -18,6 +18,13 @@
                           Icon = "Add"
                           Label="Add Trip" Click="Trip_Click"
                           />
+
+            <AppBarButton x:Name="DeleteBtn"
+                          Foreground="White"
+                          Icon = "Delete"
+                          Label="Delete Trip" Click="DeleteBtn_Click"
+                          />
+
             <AppBarButton x:Name="backButton"
                           Foreground="White"
                           Icon = "Back"
