@@ -113,7 +113,7 @@ namespace WeatherTutorial
                 {
                     tripName = newTrip.tripName,
                     destination = newTrip.destination,
-                    startingPoint = newTrip.tripName
+                    startingPoint = newTrip.startingPoint;
                 });
 
                 trips.Add(newButton);
