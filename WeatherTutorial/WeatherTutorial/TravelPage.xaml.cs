@@ -48,7 +48,7 @@ namespace WeatherTutorial
 
             connection.CreateTable<AddTrip>();
             populateListView();
-
+            
         }
 
         public void populateListView()
@@ -286,8 +286,7 @@ namespace WeatherTutorial
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             clicked = true;
-            //listView.SelectedItems.Clear();
-
+            listView.SelectedItem = null;
             backButton.IsEnabled = false;
             mapControl.Visibility = Visibility.Collapsed;
 
