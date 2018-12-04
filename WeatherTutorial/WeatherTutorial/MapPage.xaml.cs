@@ -46,11 +46,11 @@ namespace WeatherTutorial
             mapControl.Center =
                 new Geopoint(new BasicGeoposition()
                 {
-                    Latitude = 47.604, 
-                    Longitude = -122.329
+                    Latitude = 37.604, 
+                    Longitude = -100.329
 
                 });
-            mapControl.ZoomLevel = 12;
+            mapControl.ZoomLevel = 5.5;
         }
 
        
