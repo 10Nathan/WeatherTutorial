@@ -64,13 +64,7 @@
                        FontSize="30"
                        Foreground="White"
                        HorizontalAlignment="Center"/>
-            <TextBlock x:Name="txtTime"
-                       Text=""
-                       FontWeight="SemiBold"
-                       FontSize="30"
-                       Foreground="White"
-                       TextAlignment="Center"
-                       HorizontalAlignment="Center"/>
+           
 
         </StackPanel>
         <TextBlock x:Name="txtFrh"

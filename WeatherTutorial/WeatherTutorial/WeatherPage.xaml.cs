@@ -65,7 +65,7 @@ namespace WeatherTutorial
 
                 txtDescription.Text = $"{data.weather[0].description}";
                 txtHumidity.Text = $"Humidity : {data.main.humidity}";
-                txtTime.Text = $"{CommonWeather.CommonWeather.ConvertUnixTimeToDateTime(data.sys.sunrise).ToString("HH:mm")} / CommonWeather.CommonWeather.ConvertUnixTimeToDateTime(data.sys.sunset).ToString(HH:mm)";
+                
                 txtFrh.Text = $"{data.main.temp} ℉";
             }
             progressRing.IsActive = false;
@@ -110,8 +110,7 @@ namespace WeatherTutorial
                     imgWeather.Source = image;
 
                     txtDescription.Text = $"{data.weather[0].description}";
-                    txtHumidity.Text = $"Humidity : {data.main.humidity}";
-                    txtTime.Text = $"{CommonWeather.CommonWeather.ConvertUnixTimeToDateTime(data.sys.sunrise).ToString("HH:mm")} / CommonWeather.CommonWeather.ConvertUnixTimeToDateTime(data.sys.sunset).ToString(HH:mm)";
+                    txtHumidity.Text = $"Humidity : {data.main.humidity}%";
                     txtFrh.Text = $"{data.main.temp} ℉";
                 }
                 progressRing.IsActive = false;
