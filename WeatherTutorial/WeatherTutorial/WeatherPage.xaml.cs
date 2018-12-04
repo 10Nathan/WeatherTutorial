@@ -71,6 +71,10 @@ namespace WeatherTutorial
             progressRing.IsActive = false;
         }
 
+        private void favorites_click(object sender, RoutedEventArgs e)
+        {
+
+        }
 
         private async void AddLocation_Click(object sender, RoutedEventArgs e)
         {

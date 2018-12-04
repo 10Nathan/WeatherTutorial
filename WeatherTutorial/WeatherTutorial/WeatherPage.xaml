@@ -13,7 +13,6 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" 
                     Orientation="Vertical">
@@ -88,11 +87,20 @@
             
             <AppBarButton x:Name="btnAddLocation"
                           Foreground="White"
-                          Icon="Add"
-                          Label="Add Location" Click="AddLocation_Click"
+                          Icon="Find"
+                          Label="Find Location" Click="AddLocation_Click"
                           >
 
             </AppBarButton>
+            
+            <!--<AppBarButton x:Name="btnFavorites"
+                          Foreground="White"
+                          Icon="Favorite"
+                          Label="Favorites" Click="favorites_click"
+                          >
+
+            </AppBarButton>-->
+            
         </CommandBar>
     </Page.BottomAppBar>
 
