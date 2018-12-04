@@ -8,6 +8,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Services.Maps;
 using Windows.UI;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Maps;
@@ -95,30 +96,37 @@ namespace WeatherTutorial
             EnterTrip tripDialog = new EnterTrip(ref newTrip);
             var result = await tripDialog.ShowAsync();
 
-
-            ListViewItem newButton = new ListViewItem();
-
-
-            if (result == ContentDialogResult.Primary)
+            if (newTrip.allFields != false)
             {
+                ListViewItem newButton = new ListViewItem();
 
-                //stored the entered trip with startingPoint and destination
-                //newTrip.tripName = trip.tripName;
-                
-                trip.tripName = newTrip.tripName;
-                
-                storedTrips.Add(newTrip);
 
-                connection.Insert(new AddTrip()
+                if (result == ContentDialogResult.Primary)
                 {
-                    tripName = newTrip.tripName,
-                    destination = newTrip.destination,
-                    startingPoint = newTrip.startingPoint
-                });
 
-                trips.Add(newButton);
-                newButton.Content = trip.tripName;
-                listView.Items.Add(newButton);
+                    //stored the entered trip with startingPoint and destination
+                    //newTrip.tripName = trip.tripName;
+
+                    trip.tripName = newTrip.tripName;
+
+                    storedTrips.Add(newTrip);
+
+                    connection.Insert(new AddTrip()
+                    {
+                        tripName = newTrip.tripName,
+                        destination = newTrip.destination,
+                        startingPoint = newTrip.startingPoint
+                    });
+
+                    trips.Add(newButton);
+                    newButton.Content = trip.tripName;
+                    listView.Items.Add(newButton);
+                }
+            }
+            else
+            {
+                var messageDialog = new MessageDialog("Unable to create trip. All fields are required.");
+                await messageDialog.ShowAsync();
             }
 
         }

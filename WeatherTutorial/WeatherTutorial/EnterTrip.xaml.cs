@@ -30,25 +30,52 @@ namespace WeatherTutorial
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
+            newTrip.allFields = true;
 
-            //for(int i = 0; i < currentTrips.Count; i++)
-            //{
-            //    if(tripName.Text == currentTrips[i])
-            //    {
-            //        int a = 12;
-            //    }
-            //}
             ComboBoxItem state = (ComboBoxItem)StartingStateName.SelectedItem;
-            string stateTag = state.Tag.ToString();
+            string stateTag = null;
 
+            if (state != null)
+            {
+                stateTag = state.Tag.ToString();
+            }
+            else
+            {
+                newTrip.allFields = false;
+            }
 
             newTrip.tripName = tripName.Text;
+
+            
+            if(tripName.Text.Trim() == "")
+            {
+                newTrip.allFields = false;
+            }
+
             newTrip.startingPoint = startingPoint.Text + ", " + stateTag;
 
+            if(startingPoint.Text.Trim() == "")
+            {
+                newTrip.allFields = false;
+            }
+
             state = (ComboBoxItem)DestinationStateName.SelectedItem;
-            stateTag = state.Tag.ToString();
+
+            if (state != null)
+            {
+                stateTag = state.Tag.ToString();
+            }
+            else
+            {
+                newTrip.allFields = false;
+            }
 
             newTrip.destination = destination.Text + ", " + stateTag;
+
+            if(destination.Text.Trim() == "")
+            {
+                newTrip.allFields = false;
+            }
 
 
         }

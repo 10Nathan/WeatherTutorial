@@ -55,14 +55,12 @@ namespace WeatherTutorial
                 parent.fullAddress = false;
             }
 
-            if(cityName == "")
+
+            if(cityName.Trim() == "")
             {
                 parent.fullAddress = false;
             }
 
-            //string houseNumber;
-            //string streetName;
-            //string zipCode;
 
             string address = cityName + ", " + stateTag;
 

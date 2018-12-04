@@ -12,5 +12,7 @@ namespace WeatherTutorial
         public string startingPoint { get; set; }
         public string destination { get; set; }
 
+        public bool allFields { get; set; }
+
     }
 }
