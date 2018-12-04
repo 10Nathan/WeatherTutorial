@@ -62,10 +62,20 @@ namespace WeatherTutorial
 
             foreach(var addTrip in itemsToAdd)
             {
-                storedTrips.Add(addTrip);
+                StoredTrips newTrip = new StoredTrips();
+
+                newTrip.startingPoint = addTrip.startingPoint;
+                newTrip.destination = addTrip.destination;
+                newTrip.tripName = addTrip.tripName;
+
+                storedTrips.Add(newTrip);
+
                 ListViewItem newButton = new ListViewItem();
+
                 trips.Add(newButton);
+
                 newButton.Content = addTrip.tripName;
+
                 listView.Items.Add(newButton);
             }
         } 
