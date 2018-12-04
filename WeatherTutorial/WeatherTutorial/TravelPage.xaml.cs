@@ -311,7 +311,8 @@ namespace WeatherTutorial
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            listView.Items.Clear();
+            connection.DeleteAll<AddTrip>();
         }
     }
 }
