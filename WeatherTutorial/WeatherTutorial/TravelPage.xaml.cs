@@ -32,6 +32,9 @@ namespace WeatherTutorial
         static List<ListViewItem> trips = new List<ListViewItem>();
         static List<StoredTrips> storedTrips = new List<StoredTrips>();
 
+        public string path;
+        public SQLite.Net.SQLiteConnection connection;
+
         string newTrip;
         private bool clicked = false;
         MapRouteView viewOfRoute;
@@ -39,7 +42,33 @@ namespace WeatherTutorial
         public TravelPage()
         {
             this.InitializeComponent();
+
+            path = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "db.sqlite");
+            connection = new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), path);
+
+            connection.CreateTable<AddTrip>();
+
+
         }
+
+        public void populateListView()
+        {
+            
+            var itemsToAdd = connection.Table<StoredTrips>();
+            //string name;
+            //string dest;
+            //string start;
+            //AddTrip addTrp = new AddTrip();
+
+            foreach(var addTrip in itemsToAdd)
+            {
+                storedTrips.Add(addTrip);
+                ListViewItem newButton = new ListViewItem();
+                trips.Add(newButton);
+                newButton.Content = addTrip.tripName;
+                listView.Items.Add(newButton);
+            }
+        } 
 
         static int count = 1;
 
@@ -65,11 +94,17 @@ namespace WeatherTutorial
 
                 //stored the entered trip with startingPoint and destination
                 //newTrip.tripName = trip.tripName;
-
+                
                 trip.tripName = newTrip.tripName;
-
+                
                 storedTrips.Add(newTrip);
 
+                connection.Insert(new AddTrip()
+                {
+                    tripName = trip.tripName,
+                    destination = trip.destination,
+                    startingPoint = trip.tripName
+                });
 
                 trips.Add(newButton);
                 newButton.Content = trip.tripName;
@@ -87,12 +122,12 @@ namespace WeatherTutorial
 
             string item = dep.ToString();
 
-            int a = 5;
+            //int a = 5;
         }
 
         private void RadioButton_Click_1(object sender, RoutedEventArgs e)
         {
-            int b = 5;
+            //int b = 5;
         }
 
         private void listView_ItemClick(object sender, ItemClickEventArgs e)
@@ -101,7 +136,7 @@ namespace WeatherTutorial
 
             //string items = listView.SelectedItem.ToString();
 
-            int c = 123;
+          //  int c = 123;
 
             clicked = false;
         }

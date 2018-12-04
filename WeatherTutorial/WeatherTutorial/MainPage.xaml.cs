@@ -24,15 +24,11 @@ namespace WeatherTutorial
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        public string path;
-        public SQLite.Net.SQLiteConnection connection;
+        
         public MainPage()
         {
             this.InitializeComponent();
-            path = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "db.sqlite");
-            connection = new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), path);
-
-            connection.CreateTable<StoredTrips>();
+            
 
             hamburgerColor = MapBackground.Background;
         }
