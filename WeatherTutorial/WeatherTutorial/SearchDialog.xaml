@@ -79,25 +79,7 @@
 
                 </StackPanel>
             </StackPanel>
-            <TextBlock Name="OrLabel" Margin="0,15,0,0" Text="------ OR ------" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="LightGray" Visibility="Visible"></TextBlock>
 
-            <StackPanel Name="Item1" HorizontalAlignment="Left" Margin="0,15,0,0" Orientation="Horizontal" Visibility="Collapsed">
-                <TextBox Margin="10,0,0,0" Width="140" Height="20" PlaceholderText="Street Number" FontStyle="Italic"></TextBox>
-                <TextBox Margin="50,0,0,0" Width="140" Height="20" PlaceholderText="Street Name" FontStyle="Italic"></TextBox>
-            </StackPanel>
-
-            <StackPanel Name="Item2" HorizontalAlignment="Left" Margin="0,25,0,0" Orientation="Horizontal" Visibility="Collapsed">
-                <TextBox Margin="10,0,0,0" Width="140" Height="20" PlaceholderText="Zip Code" FontStyle="Italic"></TextBox>
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
-                <RadioButton Name="AdvnacedButton" Content="Advanced Search" HorizontalAlignment="Center" Click="RadioButton_Click"  PointerEntered="DownArrow_PointerEntered" PointerExited="DownArrow_PointerExited"></RadioButton>
-                <FontIcon Name="DownArrow" FontFamily="Segoe MDL2 Assets" Glyph="&#xE70D;" Margin="0,0,0,0" Visibility="Visible" FontSize="15"/>
-                <FontIcon Name="UpArrow" FontFamily="Segoe MDL2 Assets" Glyph="&#xE70E;" Margin="0,0,0,0" FontSize="15" Visibility="Collapsed"/>
-            </StackPanel>
-            <StackPanel>
-
-            </StackPanel>
         </StackPanel>
 
         <Frame x:Name="DialogFrame"/>

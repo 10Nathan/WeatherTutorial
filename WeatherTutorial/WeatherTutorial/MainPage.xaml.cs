@@ -49,25 +49,6 @@ namespace WeatherTutorial
                 switch(radioButton.Tag.ToString())
                 {
                     case "Map":
-                        //if (MapClicked == true)
-                        //{
-                        //    Disable_DropDownItems();
-                        //    MapClicked = false;
-                        //}
-                        //else
-                        //{
-                        //    MapClicked = true;
-
-                        //    if(MainFrame.Name != "MapPage")
-                        //    {
-                        //        mapPage = new MapPage();
-                        //        MainFrame.Navigate(typeof(MapPage));
-                        //        MainFrame.Name = "MapPage";
-                        //    }
-
-                        //}
-                        //Disable_DropDownItems();
-                        //radioMark.Visibility = Visibility.Visible;
                         Disable_DropDownItems();
                         radioMark.Visibility = Visibility.Visible;
                         MainFrame.Navigate(typeof(MapPage));

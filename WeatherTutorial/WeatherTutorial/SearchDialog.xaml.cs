@@ -43,7 +43,22 @@ namespace WeatherTutorial
         {
             string cityName = CityName.Text;
             ComboBoxItem state = (ComboBoxItem)StateName.SelectedItem;
-            string stateTag = state.Tag.ToString();
+            string stateTag = null;
+
+            if (state != null)
+            {
+                parent.fullAddress = true;
+                stateTag = state.Tag.ToString();
+            }
+            else
+            {
+                parent.fullAddress = false;
+            }
+
+            if(cityName == "")
+            {
+                parent.fullAddress = false;
+            }
 
             //string houseNumber;
             //string streetName;
@@ -68,20 +83,20 @@ namespace WeatherTutorial
         {
             if (advancedSearch == false)
             {
-                Item1.Visibility = Visibility.Visible;
-                Item2.Visibility = Visibility.Visible;
-                OrLabel.Visibility = Visibility.Collapsed;
-                DownArrow.Visibility = Visibility.Collapsed;
-                UpArrow.Visibility = Visibility.Visible;
+                //Item1.Visibility = Visibility.Visible;
+                //Item2.Visibility = Visibility.Visible;
+                //OrLabel.Visibility = Visibility.Collapsed;
+                //DownArrow.Visibility = Visibility.Collapsed;
+                //UpArrow.Visibility = Visibility.Visible;
                 advancedSearch = true;
             }
             else
             {
-                Item1.Visibility = Visibility.Collapsed;
-                Item2.Visibility = Visibility.Collapsed;
-                OrLabel.Visibility = Visibility.Visible;
-                DownArrow.Visibility = Visibility.Visible;
-                UpArrow.Visibility = Visibility.Collapsed;
+                //Item1.Visibility = Visibility.Collapsed;
+                //Item2.Visibility = Visibility.Collapsed;
+                //OrLabel.Visibility = Visibility.Visible;
+                //DownArrow.Visibility = Visibility.Visible;
+                //UpArrow.Visibility = Visibility.Collapsed;
 
                 advancedSearch = false;
             }
@@ -90,16 +105,16 @@ namespace WeatherTutorial
 
         private void DownArrow_PointerEntered(object sender, PointerRoutedEventArgs e)
         {
-            AdvnacedButton.Foreground = new SolidColorBrush(Colors.LightGray);
-            DownArrow.Foreground = new SolidColorBrush(Colors.LightGray);
-            UpArrow.Foreground = new SolidColorBrush(Colors.LightGray);
+            //AdvnacedButton.Foreground = new SolidColorBrush(Colors.LightGray);
+            //DownArrow.Foreground = new SolidColorBrush(Colors.LightGray);
+            //UpArrow.Foreground = new SolidColorBrush(Colors.LightGray);
         }
 
         private void DownArrow_PointerExited(object sender, PointerRoutedEventArgs e)
         {
-            AdvnacedButton.Foreground = new SolidColorBrush(Colors.Black);
-            DownArrow.Foreground = new SolidColorBrush(Colors.Black);
-            UpArrow.Foreground = new SolidColorBrush(Colors.Black);
+            //AdvnacedButton.Foreground = new SolidColorBrush(Colors.Black);
+            //DownArrow.Foreground = new SolidColorBrush(Colors.Black);
+            //UpArrow.Foreground = new SolidColorBrush(Colors.Black);
         }
 
         private void ContentDialog_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)

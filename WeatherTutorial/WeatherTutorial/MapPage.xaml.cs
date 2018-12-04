@@ -46,25 +46,23 @@ namespace WeatherTutorial
             mapControl.Center =
                 new Geopoint(new BasicGeoposition()
                 {
-                    Latitude = 37.604, 
+                    Latitude = 37.604,
                     Longitude = -100.329
 
                 });
             mapControl.ZoomLevel = 5.5;
         }
 
-       
+
         public void MyStyleButton_Click(object sender, RoutedEventArgs e)
         {
-            if(mapControl.Style == MapStyle.Aerial)
+            if (mapControl.Style == MapStyle.Aerial)
             {
                 mapControl.Style = MapStyle.Road;
-                //MyStyleButton.Content = "Aerial";
             }
             else
             {
                 mapControl.Style = MapStyle.Aerial;
-                //MyStyleButton.Content = "Road";
             }
         }
 
@@ -84,7 +82,7 @@ namespace WeatherTutorial
 
         private async void Search_Click(object sender, RoutedEventArgs e)
         {
-            
+
             SearchDialog dialog = new SearchDialog(ref dataResult);
             var result = await dialog.ShowAsync();
 
@@ -100,138 +98,57 @@ namespace WeatherTutorial
 
                 string address = dataResult.address;
 
-                string addressToGeocode = address;
-
-                BasicGeoposition queryHint = new BasicGeoposition();
-                queryHint.Latitude = 47.643;
-                queryHint.Longitude = -122.131;
-                Geopoint hintPoint = new Geopoint(queryHint);
-
-                MapLocationFinderResult mapResult = await MapLocationFinder.FindLocationsAsync(addressToGeocode, hintPoint, 3);
-
-                dataResult.Latitude = mapResult.Locations[0].Point.Position.Latitude;
-                dataResult.Longitude = mapResult.Locations[0].Point.Position.Longitude * -1;
-
-
-                // Specify a known location.
-                BasicGeoposition snPosition = new BasicGeoposition { Latitude = mapResult.Locations[0].Point.Position.Latitude, Longitude = mapResult.Locations[0].Point.Position.Longitude };
-                Geopoint snPoint = new Geopoint(snPosition);
-
-                // Create a XAML border.
-                Border border = new Border
+                if (dataResult.fullAddress == true)
                 {
-                    CornerRadius = new CornerRadius(10),
-                    Height = 100,
-                    Width = 100,
-                    BorderBrush = new SolidColorBrush(Windows.UI.Colors.Orange),
-                    BorderThickness = new Thickness(2),
-                };
-
-                // Center the map over the POI.
-                mapControl.Center = snPoint;
-                mapControl.ZoomLevel = 14;
-                
-                // Add XAML to the map.
-                mapControl.Children.Add(border);
-                MapControl.SetLocation(border, snPoint);
-                MapControl.SetNormalizedAnchorPoint(border, new Point(0.5, 0.5));
 
 
-                ////Start at Microsoft in Redmond, Washington.
-                //BasicGeoposition startLocation = new BasicGeoposition() { Latitude = mapResult.Locations[0].Point.Position.Latitude, Longitude = mapResult.Locations[0].Point.Position.Longitude };
 
-                //// End at the city of Seattle, Washington.
-                //BasicGeoposition endLocation = new BasicGeoposition() { Latitude = 47.604, Longitude = -122.329 };
+                    string addressToGeocode = address;
+
+                    BasicGeoposition queryHint = new BasicGeoposition();
+                    queryHint.Latitude = 47.643;
+                    queryHint.Longitude = -122.131;
+                    Geopoint hintPoint = new Geopoint(queryHint);
+
+                    MapLocationFinderResult mapResult = await MapLocationFinder.FindLocationsAsync(addressToGeocode, hintPoint, 3);
+
+                    dataResult.Latitude = mapResult.Locations[0].Point.Position.Latitude;
+                    dataResult.Longitude = mapResult.Locations[0].Point.Position.Longitude * -1;
 
 
-                //// Get the route between the points.
-                //MapRouteFinderResult routeResult =
-                //        await MapRouteFinder.GetDrivingRouteAsync(
-                //        new Geopoint(startLocation),
-                //        new Geopoint(endLocation),
-                //        MapRouteOptimization.Time,
-                //        MapRouteRestrictions.None);
+                    // Specify a known location.
+                    BasicGeoposition snPosition = new BasicGeoposition { Latitude = mapResult.Locations[0].Point.Position.Latitude, Longitude = mapResult.Locations[0].Point.Position.Longitude };
+                    Geopoint snPoint = new Geopoint(snPosition);
 
-                //if (routeResult.Status == MapRouteFinderStatus.Success)
-                //{
-                //    // Use the route to initialize a MapRouteView.
-                //    viewOfRoute = new MapRouteView(routeResult.Route);
-                //    viewOfRoute.RouteColor = Colors.Yellow;
-                //    viewOfRoute.OutlineColor = Colors.Black;
+                    // Create a XAML border.
+                    Border border = new Border
+                    {
+                        CornerRadius = new CornerRadius(10),
+                        Height = 100,
+                        Width = 100,
+                        BorderBrush = new SolidColorBrush(Windows.UI.Colors.Orange),
+                        BorderThickness = new Thickness(2),
+                    };
 
-                //    // Add the new MapRouteView to the Routes collection
-                //    // of the MapControl.
-                //    mapControl.Routes.Add(viewOfRoute);
+                    // Center the map over the POI.
+                    mapControl.Center = snPoint;
+                    mapControl.ZoomLevel = 14;
 
-                //    // Fit the MapControl to the route.
-                //    await mapControl.TrySetViewBoundsAsync(
-                //            routeResult.Route.BoundingBox,
-                //            null,
-                //            Windows.UI.Xaml.Controls.Maps.MapAnimationKind.None);
-                //}
+                    // Add XAML to the map.
+                    mapControl.Children.Add(border);
+                    MapControl.SetLocation(border, snPoint);
+                    MapControl.SetNormalizedAnchorPoint(border, new Point(0.5, 0.5));
+                }
+                else
+                {
+                    var messageDialog = new MessageDialog("Location not found. All fields are required.");
+                    await messageDialog.ShowAsync();
+                }
+
             }
 
         }
 
-        private async void searchRoute()
-        {
-            //double lat = Math.Round(dataResult.Latitude, 3);
-            //double lng = Math.Round(dataResult.Longitude, 3);
-
-            //double lat = 35.2468;
-            //double lng = 91.7337;
-
-            //if (dataResult.Latitude != 0 && dataResult.Longitude != 0)
-            //{
-            //    //Start at Microsoft in Redmond, Washington.
-            //    BasicGeoposition startLocation = new BasicGeoposition() { Latitude = lat, Longitude = lng };
-
-            //    // End at the city of Seattle, Washington.
-            //    BasicGeoposition endLocation = new BasicGeoposition() { Latitude = 47.604, Longitude = -122.329 };
-
-
-            //    // Get the route between the points.
-            //    MapRouteFinderResult routeResult =
-            //            await MapRouteFinder.GetDrivingRouteAsync(
-            //            new Geopoint(startLocation),
-            //            new Geopoint(endLocation),
-            //            MapRouteOptimization.Time,
-            //            MapRouteRestrictions.None);
-
-            //    if (routeResult.Status == MapRouteFinderStatus.Success)
-            //    {
-            //        // Use the route to initialize a MapRouteView.
-            //        MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
-            //        viewOfRoute.RouteColor = Colors.Yellow;
-            //        viewOfRoute.OutlineColor = Colors.Black;
-
-            //        // Add the new MapRouteView to the Routes collection
-            //        // of the MapControl.
-            //        MapControl.Routes.Add(viewOfRoute);
-
-            //        // Fit the MapControl to the route.
-            //        await MapControl.TrySetViewBoundsAsync(
-            //                routeResult.Route.BoundingBox,
-            //                null,
-            //                Windows.UI.Xaml.Controls.Maps.MapAnimationKind.None);
-            //    }
-
-            }
-        }
-
-        //protected override void OnNavigatedTo(NavigationEventArgs e)
-        //{
-        //    DialogResult message = e.Parameter as DialogResult;
-
-        //    if (message != null)
-        //    {
-        //        dataResult = message;
-        //        searchRoute();
-        //    }
-
-
-        //}
-
-    
+    }
 
 }
