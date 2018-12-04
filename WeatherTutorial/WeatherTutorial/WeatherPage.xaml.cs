@@ -28,10 +28,13 @@ namespace WeatherTutorial
     public sealed partial class WeatherPage : Page
     {
         string Lat, Lon;
-        DialogResult dataResult = new DialogResult();
+        DialogResult locationFind = new DialogResult();
+
         public WeatherPage()
         {
             this.InitializeComponent();
+            MapService.ServiceToken = "9fxJMmFfHcYo6nXiX1A9~eKNpXXS658DATXPVw6Iapg~AoVg2pR4U3lQnMAaFPBVMZ76t1o5T3WTyCBi24ae2kq6kLqTZgvgZTcuDr-bKa7B";
+
             //HideStatusBar();
         }
 
@@ -78,17 +81,17 @@ namespace WeatherTutorial
 
         private async void AddLocation_Click(object sender, RoutedEventArgs e)
         {
-
-            AddLocationDialog dialog = new AddLocationDialog(ref dataResult);
+            progressRing.IsActive = true;
+            AddLocationDialog dialog = new AddLocationDialog(ref locationFind);
             var result = await dialog.ShowAsync();
 
             if (result == ContentDialogResult.Primary)
             {
 
-                double a = dataResult.Latitude;
+                double a = locationFind.Latitude;
 
 
-                string address = dataResult.address;
+                string address = locationFind.address;
 
                 string addressToGeocode = address;
 
@@ -99,8 +102,8 @@ namespace WeatherTutorial
 
                 MapLocationFinderResult mapResult = await MapLocationFinder.FindLocationsAsync(addressToGeocode, hintPoint, 3);
 
-                dataResult.Latitude = mapResult.Locations[0].Point.Position.Latitude;
-                dataResult.Longitude = mapResult.Locations[0].Point.Position.Longitude * -1;
+                locationFind.Latitude = mapResult.Locations[0].Point.Position.Latitude;
+                locationFind.Longitude = mapResult.Locations[0].Point.Position.Longitude * -1;
 
                 Lat = mapResult.Locations[0].Point.Position.Latitude.ToString();
                 Lon = mapResult.Locations[0].Point.Position.Longitude.ToString();

@@ -29,8 +29,8 @@ namespace WeatherTutorial
         double longitude1;
 
         DialogResult parent;
+        
 
-        private bool advancedSearch = false;
         public AddLocationDialog(ref DialogResult param)
         {
             this.InitializeComponent();
@@ -39,6 +39,12 @@ namespace WeatherTutorial
 
             //TestMethod();
 
+        }
+
+        private void ContentDialog_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)
+        {
+            //parent.Latitude = latitude1;
+           // parent.Longitude = longitude1;
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
@@ -64,16 +70,13 @@ namespace WeatherTutorial
 
         private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
+            parent.Latitude = latitude1;
+            parent.Longitude = longitude1;
         }
 
       
 
         
 
-        private void ContentDialog_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)
-        {
-            parent.Latitude = latitude1;
-            parent.Longitude = longitude1;
-        }
     }
 }
